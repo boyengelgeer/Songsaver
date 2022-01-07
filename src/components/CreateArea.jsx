@@ -7,9 +7,10 @@ function CreateArea(props) {
         genre: "",
         rating: ""
     });
+
     function handleChange(event) {
         const { name, value } = event.target
-        
+
         setSong(prevSong => {
             return {
                 ...prevSong,
@@ -41,19 +42,19 @@ function CreateArea(props) {
                 value={song.genre}
                 onChange={handleChange}>
                 <option value=""></option>
-                <option>Rock</option>
-                <option>Hiphop</option>
-                <option>Folk</option>
+                <option value="Rock">Rock</option>
+                <option value="HipHop">Hiphop</option>
+                <option value="Folk">Folk</option>
             </select>
             <select placeholder="Rating"
                 name="rating"
                 value={song.rating}
                 onChange={handleChange}>
-                <option>1</option>
-                <option>2</option>
-                <option>3</option>
-                <option>4</option>
-                <option>5</option>
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
             </select>
             <button onClick={submitSong}>Submit</button>
         </form>

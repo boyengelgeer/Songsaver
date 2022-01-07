@@ -16,12 +16,12 @@ function App() {
     console.log(song)
   }
 
-  function deleteSong(id) {
-    setSongs(prevNotes => {
-      return prevNotes.filter((songItem, index) => {
-        return index !== id
-      })
+  function deleteSong(title) {
+    const filteredSongs = songs.filter((song) => {
+      return song.songTitle === title;
     })
+
+    setSongs(filteredSongs)
     console.log("Clicked")
   }
 

@@ -2,15 +2,15 @@ import React from 'react'
 
 function SongList(props) {
 
-    function handleClick() {
-        props.onDelete(props.id)
+    function handleClick(title) {
+        props.onDelete(title)
 
     }
 
     return <tbody>
         {
             props.songs.map((songItem, index) => {
-                return <tr onClick={handleClick} key={index} id={index}>
+                return <tr onClick={() => handleClick(songItem.songTitle)} key={index}>
                     <td>{songItem.songTitle}</td>
                     <td>{songItem.songArtist}</td>
                     <td>{songItem.genre}</td>

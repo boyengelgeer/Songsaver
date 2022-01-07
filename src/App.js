@@ -18,7 +18,7 @@ function App() {
 
   function deleteSong(title) {
     const filteredSongs = songs.filter((song) => {
-      return song.songTitle === title;
+      return song.songTitle !== title;
     })
 
     setSongs(filteredSongs)

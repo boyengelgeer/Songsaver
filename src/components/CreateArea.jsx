@@ -22,6 +22,7 @@ function CreateArea(props) {
     function submitSong(event) {
         event.preventDefault();
         props.onAdd(song);
+        
     }
     return <nav>
         <form>

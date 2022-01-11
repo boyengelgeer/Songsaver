@@ -13,16 +13,56 @@ function App() {
     setSongs(prevSong => {
       return [...prevSong, song]
     })
-    console.log(song)
+
   }
 
-  function deleteSong(title) {
+  function deleteSong(id) {
     const filteredSongs = songs.filter((song) => {
-      return song.songTitle !== title;
+      return song.id !== id;
     })
 
     setSongs(filteredSongs)
-    console.log("Clicked")
+
+  }
+
+  function sortByTitleAscending() {
+    const sortedSongsTitleAsc = [...songs]
+    sortedSongsTitleAsc.sort((a, b) => {
+      return a.songTitle.localeCompare(b.songTitle);
+
+    })
+    console.log(sortedSongsTitleAsc)
+    setSongs(sortedSongsTitleAsc)
+  }
+
+  function sortByTitleDescending() {
+    const sortedSongsTitleDes = [...songs]
+    sortedSongsTitleDes.sort((a, b) => {
+      return b.songTitle.localeCompare(a.songTitle);
+
+    })
+    console.log(sortedSongsTitleDes)
+    setSongs(sortedSongsTitleDes)
+  }
+
+  function sortByRatingAscending() {
+    const sortedSongsRatingAsc = [...songs]
+    sortedSongsRatingAsc.sort((a, b) => {
+      return a.rating.localeCompare(b.rating);
+
+    })
+    console.log(sortedSongsRatingAsc)
+    setSongs(sortedSongsRatingAsc)
+  }
+
+  function sortByRatingDescending() {
+    const sortedSongsRatingDes = [...songs]
+    sortedSongsRatingDes.sort((a, b) => {
+      return b.rating.localeCompare(a.rating);
+
+    })
+    console.log(sortedSongsRatingDes)
+    setSongs(sortedSongsRatingDes)
   }
 
 
@@ -31,7 +71,7 @@ function App() {
     <CreateArea
       onAdd={addSong}
     />
-    <SongPlaylist songs={songs} onDelete={deleteSong} />
+    <SongPlaylist songs={songs} onDelete={deleteSong} onSortTitleAsc={sortByTitleAscending} onSortTitleDes={sortByTitleDescending} onSortRatingAsc={sortByRatingAscending} onSortRatingDes={sortByRatingDescending} />
     <Footer />
   </div>
   );

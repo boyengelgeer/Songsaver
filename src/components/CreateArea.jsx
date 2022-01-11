@@ -1,11 +1,16 @@
 import React, { useState } from "react";
+import { v4 as uuidv4 } from 'uuid';
+
+
 
 function CreateArea(props) {
     const [song, setSong] = useState({
         songTitle: "",
         songArtist: "",
         genre: "",
-        rating: ""
+        rating: "",
+        id: ""
+
     });
 
     function handleChange(event) {
@@ -19,10 +24,24 @@ function CreateArea(props) {
         })
     }
 
+
     function submitSong(event) {
+
+        const newId = uuidv4()
+
+
+        setSong(prevSong => {
+            return {
+                ...prevSong,
+                id: newId
+            }
+        })
+
         event.preventDefault();
         props.onAdd(song);
-        
+
+
+
     }
     return <nav>
         <form>
@@ -42,7 +61,7 @@ function CreateArea(props) {
                 name="genre"
                 value={song.genre}
                 onChange={handleChange}>
-                <option value=""></option>
+                <option value="">Choose Genre</option>
                 <option value="Rock">Rock</option>
                 <option value="HipHop">Hiphop</option>
                 <option value="Folk">Folk</option>
@@ -51,6 +70,7 @@ function CreateArea(props) {
                 name="rating"
                 value={song.rating}
                 onChange={handleChange}>
+                <option value="">Choose Rating</option>
                 <option value="1">1</option>
                 <option value="2">2</option>
                 <option value="3">3</option>
